@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form id="Converterform">
+        <input type="radio" name="scale" value="fahrenheit">Farenh
+        <input type="radio" name="scale" value="celsius">Celcius
+    <label>Temperature:</label>
+
+    <input type="text" id="temperatureInput" placeholder="Enter temperature" required>
+    <br>
+
+    <button type="button" onclick="convert('toCelsius')">Convert to Celsius</button>
+    <button type="button" onclick="convert('toFahrenheit')">Convert to Fahrenheit</button>
+
+</form>
+    <div id="result">
+        <p id="resultCelsius"></p>
+        <p id="resultFahrenheit"></p>
+    </div>
+
+
+</body>
+
+<script>
+function convert(conversionType) {
+    const inputTemperature = parseFloat(document.getElementById('temperatureInput').value);
+    const scale = document.querySelector('input[name="scale"]:checked').value;
+
+
+    if(isNaN(inputTemperature)){
+        alert('dhhdh');
+    }
+    let resultCelsius,resultFahrenheit;
+    if (scale === 'fahrenheit' && conversionType === 'toCelsius') {
+                resultCelsius = (inputTemperature - 32) * 5/9;
+                resultCelsius = inputTemperature;
+            } else if (scale === 'celsius' && conversionType === 'toFahrenheit') {
+                resultCelsius = inputTemperature;
+                resultFahrenheit = (inputTemperature * 9/5) + 32;
+            }
+
+            document.getElementById('resultCelsius').textContent = `Temperature in Celsius: ${resultCelsius.toFixed(2)} °C`;
+            document.getElementById('resultFahrenheit').textContent = `Temperature in Fahrenheit: ${resultFahrenheit.toFixed(2)} °F`;
+}
+
+
+
+</script>
+</html>
